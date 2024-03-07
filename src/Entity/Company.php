@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Entity;
-
+// ! Comando para rodar o symfony : symfony serve -d --no-tls
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
+#[ORM\Table(name: 'company')]
 class Company
 {
     #[ORM\Id]
@@ -18,9 +19,6 @@ class Company
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $cnpj = null;
 
     public function getId(): ?int
     {
@@ -47,18 +45,6 @@ class Company
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getCnpj(): ?string
-    {
-        return $this->cnpj;
-    }
-
-    public function setCnpj(string $cnpj): static
-    {
-        $this->cnpj = $cnpj;
 
         return $this;
     }
